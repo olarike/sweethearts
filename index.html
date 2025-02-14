@@ -60,15 +60,31 @@
     .heart-container a:hover {
       transform: scale(1.2);
     }
+    .heart-container a i {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .heart-container a i span {
+      position: absolute;
+      font-size: 12px;
+      color: white;
+      font-weight: normal;
+      margin: 0;
+      animation: none;
+      background: none;
+      -webkit-text-fill-color: white;
+    }
   </style>
 </head>
 
 <body onload="startup()">
   <div class="heart-container">
     <span>$SWEETHEARTS</span>
-    <a href="https://dexscreener.com/solana/F3ZfYgWauCZRfwDs9ijKkqo4t83Waxqc4cz9mUsJpNWr" target="_blank" title="Visit DexScreener"><i class="fas fa-heart"></i></a>
-    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=FePxkSZXkpqtMT8FTijuR6McbX5ZoE9LKjJdy4p1pump" target="_blank" title="Check our charts"><i class="fas fa-heart"></i></a>
-    <a href="https://dexscreener.com" target="_blank" title="Join our community"><i class="fas fa-heart"></i></a>
+    <a href="https://dexscreener.com/solana/" target="_blank" title="Visit DexScreener"><i class="fas fa-heart"><span>dexscreener</span></i></a>
+    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=" target="_blank" title="Check our charts"><i class="fas fa-heart"><span>raydium</span></i></a>
+    <a href="https://x.com/ValSweethearts" target="_blank" title="Join our community"><i class="fas fa-heart"><span>community</span></i></a>
   </div>
   <canvas></canvas>
   <script src="canvas.js"></script>
