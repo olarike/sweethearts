@@ -97,6 +97,9 @@ const heartMsgArr = [
   'Beautiful\nSoul',
   'My\nOne\nand\nOnly',
   'Kiss\nMe',
+  'Be My\nValentine',
+  'My Forever\nValentine',
+  'Now\nand\nForever',
   
 ]
 // set total hearts based on screen area (max 600)
