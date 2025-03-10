@@ -214,12 +214,36 @@
   
   <!-- Update the countdown timer script -->
   <script>
-    // Set the date we're counting down to (15 minutes from now)
-    const countdownDate = new Date();
-    countdownDate.setMinutes(countdownDate.getMinutes() + 15);
+    // Function to initialize the countdown timer
+    function initCountdown() {
+      let countdownDate;
+      
+      // Check if we already have a stored end time
+      const storedEndTime = localStorage.getItem('countdownEndTime');
+      
+      if (storedEndTime) {
+        // Use the stored end time
+        countdownDate = new Date(parseInt(storedEndTime));
+      } else {
+        // Set a new end time (15 minutes from now)
+        countdownDate = new Date();
+        countdownDate.setMinutes(countdownDate.getMinutes() + 15);
+        
+        // Store the end time for future page loads
+        localStorage.setItem('countdownEndTime', countdownDate.getTime().toString());
+      }
+      
+      // Initialize the display immediately before the first interval
+      updateCountdown(countdownDate);
+      
+      // Update the countdown every 1 second
+      const countdownTimer = setInterval(function() {
+        updateCountdown(countdownDate, countdownTimer);
+      }, 1000);
+    }
     
-    // Update the countdown every 1 second
-    const countdownTimer = setInterval(function() {
+    // Function to update the countdown display
+    function updateCountdown(countdownDate, timer) {
       // Get current date and time
       const now = new Date().getTime();
       
@@ -239,14 +263,18 @@
       document.getElementById("countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
       
       // If the countdown is finished, display a message
-      if (distance < 0) {
-        clearInterval(countdownTimer);
+      if (distance < 0 && timer) {
+        clearInterval(timer);
+        localStorage.removeItem('countdownEndTime'); // Clear the stored time
         document.querySelector(".countdown-container").innerHTML = 
           '<div class="countdown-title" style="font-size: 24px;">Launch Complete! <i class="fas fa-rocket heart-beat" style="color: #FF1493;"></i></div>' +
           '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">We are now live!</div>' +
           '<div><a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;"><i class="fa-brands fa-x-twitter"></i> Follow us on Twitter</a></div>';
       }
-    }, 1000);
+    }
+    
+    // Initialize the countdown when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', initCountdown);
   </script>
 </body>
 
