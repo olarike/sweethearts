@@ -176,10 +176,10 @@
 <body onload="startup()">
   <!-- Add the countdown timer container -->
   <div class="countdown-container">
-    <div class="countdown-title">Special Surprise Countdown <i class="fas fa-heart heart-beat" style="color: #FF1493;"></i></div>
+    <div class="countdown-title">Special Launch Countdown <i class="fas fa-heart heart-beat" style="color: #FF1493;"></i></div>
     <div class="countdown-timer">
       <div class="countdown-segment">
-        <div id="countdown-days" class="countdown-number">14</div>
+        <div id="countdown-days" class="countdown-number">00</div>
         <div class="countdown-label">Days</div>
       </div>
       <div class="countdown-segment">
@@ -187,7 +187,7 @@
         <div class="countdown-label">Hours</div>
       </div>
       <div class="countdown-segment">
-        <div id="countdown-minutes" class="countdown-number">00</div>
+        <div id="countdown-minutes" class="countdown-number">15</div>
         <div class="countdown-label">Minutes</div>
       </div>
       <div class="countdown-segment">
@@ -195,7 +195,12 @@
         <div class="countdown-label">Seconds</div>
       </div>
     </div>
-    <div class="countdown-message">Counting down to our special moment together...</div>
+    <div class="countdown-message">Counting down to our special launch...</div>
+    <div style="margin-top: 10px;">
+      <a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;">
+        <i class="fa-brands fa-x-twitter"></i> Follow us on Twitter
+      </a>
+    </div>
   </div>
   
   <div class="heart-container">
@@ -207,11 +212,11 @@
   <canvas></canvas>
   <script src="canvas.js?t=<?php echo time(); ?>"></script>
   
-  <!-- Add the countdown timer script -->
+  <!-- Update the countdown timer script -->
   <script>
-    // Set the date we're counting down to (14 days from now)
+    // Set the date we're counting down to (15 minutes from now)
     const countdownDate = new Date();
-    countdownDate.setDate(countdownDate.getDate() + 14);
+    countdownDate.setMinutes(countdownDate.getMinutes() + 15);
     
     // Update the countdown every 1 second
     const countdownTimer = setInterval(function() {
@@ -228,7 +233,7 @@
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       
       // Display the result
-      document.getElementById("countdown-days").textContent = days;
+      document.getElementById("countdown-days").textContent = days < 10 ? "0" + days : days;
       document.getElementById("countdown-hours").textContent = hours < 10 ? "0" + hours : hours;
       document.getElementById("countdown-minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
       document.getElementById("countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
@@ -237,8 +242,9 @@
       if (distance < 0) {
         clearInterval(countdownTimer);
         document.querySelector(".countdown-container").innerHTML = 
-          '<div class="countdown-title" style="font-size: 24px;">Surprise Revealed! <i class="fas fa-gift heart-beat" style="color: #FF1493;"></i></div>' +
-          '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">Check your email for your special gift!</div>';
+          '<div class="countdown-title" style="font-size: 24px;">Launch Complete! <i class="fas fa-rocket heart-beat" style="color: #FF1493;"></i></div>' +
+          '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">We are now live!</div>' +
+          '<div><a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;"><i class="fa-brands fa-x-twitter"></i> Follow us on Twitter</a></div>';
       }
     }, 1000);
   </script>
