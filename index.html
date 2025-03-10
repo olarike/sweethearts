@@ -79,18 +79,169 @@
       background: none;
       -webkit-text-fill-color: white;
     }
+    
+    /* Countdown Timer Styles */
+    .countdown-container {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+      backdrop-filter: blur(5px);
+      border: 2px solid #FF69B4;
+      max-width: 90%;
+    }
+    
+    .countdown-title {
+      font-family: 'Arial', cursive;
+      font-size: 18px;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #FF1493, #FF69B4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+    
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .countdown-segment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .countdown-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #FF1493;
+      background: linear-gradient(135deg, #FF69B4, #FF1493);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .countdown-label {
+      font-size: 12px;
+      color: #FF69B4;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    
+    .countdown-message {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #FF1493;
+      font-style: italic;
+    }
+    
+    @media (max-width: 600px) {
+      .countdown-container {
+        padding: 10px 15px;
+      }
+      .countdown-title {
+        font-size: 16px;
+      }
+      .countdown-number {
+        font-size: 20px;
+      }
+      .countdown-label {
+        font-size: 10px;
+      }
+    }
+    
+    .heart-beat {
+      animation: heartBeat 1.5s infinite;
+    }
+    
+    @keyframes heartBeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.1); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
+    }
   </style>
 </head>
 
 <body onload="startup()">
+  <!-- Add the countdown timer container -->
+  <div class="countdown-container">
+    <div class="countdown-title">Special Surprise Countdown <i class="fas fa-heart heart-beat" style="color: #FF1493;"></i></div>
+    <div class="countdown-timer">
+      <div class="countdown-segment">
+        <div id="countdown-days" class="countdown-number">14</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-segment">
+        <div id="countdown-hours" class="countdown-number">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-segment">
+        <div id="countdown-minutes" class="countdown-number">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-segment">
+        <div id="countdown-seconds" class="countdown-number">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+    <div class="countdown-message">Counting down to our special moment together...</div>
+  </div>
+  
   <div class="heart-container">
     <span>$SWEETHEARTS</span>
     <a href="https://dexscreener.com/solana/" target="_blank" title="Visit DexScreener"><i class="fas fa-heart"><span><i class="fas fa-chart-line"></i></span></i></a>
     <a href="https://raydium.io/swap/?inputMint=sol&outputMint=" target="_blank" title="Check our charts"><i class="fas fa-heart"><span>raydium</span></i></a>
-    <a href="https://x.com/ValSweethearts" target="_blank" title="Join our community"><i class="fas fa-heart"><span><i class="fa-brands fa-x-twitter"></i></span></i></a>
+    <a href="https://x.com/Sweetheartslife" target="_blank" title="Join our community"><i class="fas fa-heart"><span><i class="fa-brands fa-x-twitter"></i></span></i></a>
   </div>
   <canvas></canvas>
   <script src="canvas.js?t=<?php echo time(); ?>"></script>
+  
+  <!-- Add the countdown timer script -->
+  <script>
+    // Set the date we're counting down to (14 days from now)
+    const countdownDate = new Date();
+    countdownDate.setDate(countdownDate.getDate() + 14);
+    
+    // Update the countdown every 1 second
+    const countdownTimer = setInterval(function() {
+      // Get current date and time
+      const now = new Date().getTime();
+      
+      // Find the distance between now and the countdown date
+      const distance = countdownDate - now;
+      
+      // Time calculations for days, hours, minutes and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      // Display the result
+      document.getElementById("countdown-days").textContent = days;
+      document.getElementById("countdown-hours").textContent = hours < 10 ? "0" + hours : hours;
+      document.getElementById("countdown-minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+      
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.querySelector(".countdown-container").innerHTML = 
+          '<div class="countdown-title" style="font-size: 24px;">Surprise Revealed! <i class="fas fa-gift heart-beat" style="color: #FF1493;"></i></div>' +
+          '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">Check your email for your special gift!</div>';
+      }
+    }, 1000);
+  </script>
 </body>
 
 </html>
