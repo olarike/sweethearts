@@ -178,7 +178,7 @@
   <div class="countdown-container">
     <div class="countdown-title">Special Launch Countdown <i class="fas fa-heart heart-beat" style="color: #FF1493;"></i></div>
     <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-    <a href="https://logwork.com/countdown-timer" class="countdown-timer"  data-width="437" data-timezone="Europe/Helsinki" data-textcolor="#ff1493" data-date="2025-03-10 18:45" data-background="rgba(255, 255, 255, 0.6)" data-digitscolor="#ff1493" data-countdown="hours" data-name="$SWEETHEARTS">$SWEETHEARTS</a>
+    <a href="https://logwork.com/countdown-timer" class="countdown-timer"  data-width="437" data-timezone="Europe/Helsinki" data-textcolor="#ff1493" data-date="2025-03-10 19:35" data-background="rgba(255, 255, 255, 0.6)" data-digitscolor="#ff1493" data-countdown="hours" data-name="$SWEETHEART">$SWEETHEART</a>
     <div class="countdown-message" style="margin-top: 15px;">Counting down to our special launch...</div>
     <div style="margin-top: 10px;">
       <a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;">
@@ -188,7 +188,7 @@
   </div>
   
   <div class="heart-container">
-    <span>$SWEETHEARTS</span>
+    <span>$SWEETHEART</span>
     <a href="https://dexscreener.com/solana/" target="_blank" title="Visit DexScreener"><i class="fas fa-heart"><span><i class="fas fa-chart-line"></i></span></i></a>
     <a href="https://t.me/sweethearts_life" target="_blank" title="Join Telegram"><i class="fas fa-heart"><span>Telegram</span></i></a>
     <a href="https://x.com/Sweetheartslife" target="_blank" title="Join our community"><i class="fas fa-heart"><span><i class="fa-brands fa-x-twitter"></i></span></i></a>
@@ -213,11 +213,18 @@
           document.getElementById("countdown-seconds").textContent = timeData.seconds;
         },
         onComplete: function() {
-          // Show completion message
+          // Show completion message with both Twitter and Telegram links, mentioning CA
           document.querySelector(".countdown-container").innerHTML = 
-            '<div class="countdown-title" style="font-size: 24px;">Launch Complete! <i class="fas fa-rocket heart-beat" style="color: #FF1493;"></i></div>' +
-            '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">We are now live!</div>' +
-            '<div><a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;"><i class="fa-brands fa-x-twitter"></i> Follow us on Twitter</a></div>';
+            '<div class="countdown-title" style="font-size: 24px;">We Are Now Live! <i class="fas fa-rocket heart-beat" style="color: #FF1493;"></i></div>' +
+            '<div class="countdown-message" style="font-size: 18px; margin: 15px 0;">Follow us on Twitter and Telegram for Contract Address (CA)</div>' +
+            '<div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px;">' +
+              '<a href="https://t.me/+jxvBPoEIBCFmMWM0" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;">' +
+                '<i class="fab fa-telegram"></i> Join Telegram' +
+              '</a>' +
+              '<a href="https://x.com/Sweetheartslife" target="_blank" style="color: #FF1493; text-decoration: none; font-size: 14px;">' +
+                '<i class="fa-brands fa-x-twitter"></i> Follow Twitter' +
+              '</a>' +
+            '</div>';
         }
       });
       
