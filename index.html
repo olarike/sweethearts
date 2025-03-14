@@ -147,15 +147,51 @@
     @media (max-width: 600px) {
       .countdown-container {
         padding: 10px 15px;
+        top: 10px;
+        width: 90%;
       }
+      
       .countdown-title {
         font-size: 16px;
       }
-      .countdown-number {
-        font-size: 20px;
+      
+      .heart-container {
+        top: auto;
+        bottom: 20px;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px 0;
+        backdrop-filter: blur(5px);
       }
-      .countdown-label {
+      
+      .heart-container span {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+      
+      .heart-container a {
+        font-size: 40px;
+        margin-left: 10px;
+      }
+      
+      .heart-container a i span {
         font-size: 10px;
+      }
+    }
+    
+    /* Add styles for very small screens */
+    @media (max-width: 360px) {
+      .heart-container span {
+        font-size: 16px;
+      }
+      
+      .heart-container a {
+        font-size: 32px;
+        margin-left: 8px;
       }
     }
     
